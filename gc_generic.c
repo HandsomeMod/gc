@@ -144,11 +144,7 @@ int gc_disable_gadget(gc_generic_info info)
         return GC_FAILED;
     usbg_gadget *g;
     g = usbg_get_first_gadget(state);
-    if(usbg_disable_gadget(g) != USBG_SUCCESS){
-        fprintf(stderr,"failed to disable gadget! \n");
-        gc_clean();
-        return GC_FAILED;
-    }
+    usbg_disable_gadget(g);
 
     return GC_SUCCESS;
 }
