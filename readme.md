@@ -24,9 +24,10 @@ make
 Usage : gc [options....] 
 -h          Show this help. 
 -l          Show active gadget functions. 
--c          Clean all active gadget.                                            
--a <function> [configs ...]   Add a gadget function.                            
--d <name>      Delete a gadget function by name in list (-l).  
+-c          Clean all active gadget.                                           -e          Enable all active gadget.
+-d          Disable all active gadget.
+-a <function> [configs ...]   Add a gadget function.                           
+-r <name>      Delete a gadget function by name in list (-l).  
 ```
 
 ## Examples
