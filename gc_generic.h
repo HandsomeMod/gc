@@ -56,6 +56,12 @@ int gc_remove_all_gadgets(gc_generic_info info);
 /* 销毁usb gadget */
 void gc_clean();
 
+/* 手动开启gadget */
+int gc_enable_gadget(gc_generic_info info);
+
+/* 手动关闭gadget */
+int gc_disable_gadget(gc_generic_info info);
+
 /* 得到config */
 usbg_config *gc_get_config(usbg_gadget *gadget);
 

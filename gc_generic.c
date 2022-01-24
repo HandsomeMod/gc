@@ -123,6 +123,37 @@ int gc_remove_all_gadgets(gc_generic_info info)
     return GC_SUCCESS;
 }
 
+int gc_enable_gadget(gc_generic_info info)
+{
+    if(gc_init(info) == NULL)
+        return GC_FAILED;
+    usbg_gadget *g;
+    g = usbg_get_first_gadget(state);
+    if(usbg_enable_gadget(g, DEFAULT_UDC) != USBG_SUCCESS){
+        fprintf(stderr,"failed to enable gadget! \n");
+        gc_clean();
+        return GC_FAILED;
+    }
+    
+    return GC_SUCCESS;
+}
+
+int gc_disable_gadget(gc_generic_info info)
+{
+    if(gc_init(info) == NULL)
+        return GC_FAILED;
+    usbg_gadget *g;
+    g = usbg_get_first_gadget(state);
+    if(usbg_disable_gadget(g) != USBG_SUCCESS){
+        fprintf(stderr,"failed to disable gadget! \n");
+        gc_clean();
+        return GC_FAILED;
+    }
+
+    return GC_SUCCESS;
+}
+
+
 /* id generate helper */
 static int gc_get_functions()
 {

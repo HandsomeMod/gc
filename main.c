@@ -43,8 +43,10 @@ static void print_help()
     printf("-h          Show this help. \n");
     printf("-l          Show active gadget functions. \n");
     printf("-c          Clean all active gadget. \n");
+    printf("-e          Enable all active gadget. \n");
+    printf("-d          Disable all active gadget. \n");
     printf("-a <function> [configs ...]   Add a gadget function. \n");
-    printf("-d <name>      Delete a gadget function by name in list (-l). \n");
+    printf("-r <name>      Remove a gadget function by name in list (-l). \n");
 }
 
 int main(int argc,char *argv[])
@@ -70,6 +72,12 @@ int main(int argc,char *argv[])
     } else if(strcmp(argv[1],"-l") == 0) {
         /* list gadget functions */
         gc_show_list();
+    } else if(strcmp(argv[1],"-e") == 0) {
+        /* enable gadget functions */
+        gc_enable_gadget(info);
+    } else if(strcmp(argv[1],"-d") == 0) {
+        /* disable gadget functions */
+        gc_disable_gadget(info);
     } else if(strcmp(argv[1],"-a") == 0) {
         /* add a gadget function */
         if(!is_root()){
@@ -113,7 +121,7 @@ int main(int argc,char *argv[])
             if(gc_acm_create(argc,argv,info) == GC_FAILED)
                 return -1;
         }
-    } else if(strcmp(argv[1],"-d") == 0) {
+    } else if(strcmp(argv[1],"-r") == 0) {
         /* delete a gadget function */
         if(argc < 3) {
             printf("You need a gadget to remove ! \n");
