@@ -112,13 +112,6 @@ int gc_uvc_create(int argc,char *argv[],gc_generic_info info)
         return GC_FAILED;
     }
 
-    usbg_ret = usbg_enable_gadget(gadget, DEFAULT_UDC);
-    if(usbg_ret != USBG_SUCCESS){
-        fprintf(stderr,"failed to enable gadget! \n");
-        gc_clean();
-        return GC_FAILED;
-    }
-
     gc_clean();
     return GC_SUCCESS;
 }
